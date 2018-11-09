@@ -5,6 +5,8 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.string :domain
 
       t.timestamps
+
+      t.index :domain, unique: true
     end
   end
 end
