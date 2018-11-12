@@ -1,0 +1,8 @@
+<h1>Top Secret Documents</h1>
+
+<% if signed_in? %>
+  <% @documents.each do |document| %>
+    <h2><%= document.name %></h2>
+    <h3><%= document.company.name %></h3>
+  <% end %>
+<% end %>
