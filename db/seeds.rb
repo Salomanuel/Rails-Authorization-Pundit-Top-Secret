@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# frozen_string_literal: true
+
+space_x = Company.create! name: 'Space X', domain: 'spacex.com'
+tesla = Company.create! name: 'Tesla', domain: 'Tesla'
+apple = Company.create! name: 'Apple', domain: 'Apple'
+google = Company.create! name: 'Google', domain: 'Google'
+amazon = Company.create! name: 'Amazon', domain: 'Amazon'
+
+[space_x, tesla, apple, google, amazon].each do |company|
+  %w[sue john mary arthur].each do |username|
+    email = "#{username}@#{company.domain}"
+    User.create!(email: email, password: 'password')
+  end
+
+  name = '2018 plan'
+  content = "#{company.name}'s plan for the year 2018"
+  Document.create!(company: company, name: name, content: content)
+
+  name = 'The next big thing'
+  technologies = %w[VR AI Wearables Streaming\ Videos Voice\ Assistants]
+  mediums = %w[in\ space in\ hovercrafts on\ a\ remote\ island for\ cats]
+  big_thing = "#{technologies.sample} #{mediums.sample}"
+  content = "The next big thing is something only #{company.name} can do: #{big_thing}."
+  Document.create!(company: company, name: name, content: content)
+end
