@@ -1,6 +1,15 @@
 <% if signed_in? %>
   <div>
-    <p><%= current_user.email %></p>
+    <dl>
+      <dt>Email</dt>
+      <dd><%= current_user.email %></dd>
+
+      <dt>Domain</dt>
+      <dd><%= current_user.domain %></dd>
+
+      <dt>Company</dt>
+      <dd><%= current_user.company.name %></dd>
+    </dl>
 
     <%= link_to 'Sign out', destroy_user_session_path, method: :delete  %>
   </div>
