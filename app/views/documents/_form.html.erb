@@ -1,0 +1,13 @@
+<%= form_with(model: document, local: true) do |f| %>
+  <div class="form-control">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form-control">
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+
+  <%= f.button %>
+<% end %>
