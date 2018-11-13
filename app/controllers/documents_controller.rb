@@ -15,10 +15,12 @@ class DocumentsController < ApplicationController
 
   def edit
     @document = Document.find(params[:id])
+    authorize @document
   end
 
   def update
     @document = Document.find(params[:id])
+    authorize @document
     if @document.update(document_params)
       redirect_to @document
     else
